@@ -23,6 +23,8 @@ public class UserController {
     @PostMapping("/register")
     public ResponseEntity register(@Valid @RequestBody final User user) {
 
-        return ResponseEntity.ok(user);
+        final User newUser = userService.register(user);
+
+        return ResponseEntity.ok(newUser);
     }
 }
