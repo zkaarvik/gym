@@ -1,4 +1,4 @@
-package com.kaarvik.gym.model;
+package com.kaarvik.gym.model.gym;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,22 +7,21 @@ import lombok.NoArgsConstructor;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class ExerciseSet {
+public class Exercise {
 
     @Id
     @GeneratedValue
     private long id;
 
-    private int goalReps;
+    private ExerciseType exerciseType;
 
-    private int completedReps;
-
-    private double weight;
-
-    private boolean isAmrap;
+    @OneToMany
+    private List<ExerciseSet> exerciseSets;
 }

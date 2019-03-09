@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 
 @Data
@@ -19,7 +20,7 @@ public class User {
     @GeneratedValue
     private long id;
 
-    @NotEmpty
+    @Email
     private String email;
 
     private String name;

@@ -1,4 +1,4 @@
-package com.kaarvik.gym.model;
+package com.kaarvik.gym.model.gym;
 
 public enum ExerciseType {
     SQUAT,

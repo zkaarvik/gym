@@ -1,7 +1,7 @@
 package com.kaarvik.gym.controller;
 
-import com.kaarvik.gym.model.Workout;
-import com.kaarvik.gym.model.WorkoutType;
+import com.kaarvik.gym.model.gym.Workout;
+import com.kaarvik.gym.model.gym.WorkoutType;
 import com.kaarvik.gym.repository.WorkoutRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

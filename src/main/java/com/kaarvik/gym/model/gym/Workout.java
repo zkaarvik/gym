@@ -1,4 +1,4 @@
-package com.kaarvik.gym.model;
+package com.kaarvik.gym.model.gym;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
