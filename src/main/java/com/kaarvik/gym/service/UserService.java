@@ -1,6 +1,6 @@
 package com.kaarvik.gym.service;
 
-import com.kaarvik.gym.model.user.User;
+import com.kaarvik.gym.model.user.ApplicationUser;
 import com.kaarvik.gym.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -18,14 +18,14 @@ public class UserService {
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Transactional
-    public User register(final User user) {
-        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+    public ApplicationUser register(final ApplicationUser applicationUser) {
+        applicationUser.setPassword(bCryptPasswordEncoder.encode(applicationUser.getPassword()));
 
-        return userRepository.save(user);
+        return userRepository.save(applicationUser);
     }
 
     @Transactional(readOnly = true)
-    public User login() {
+    public ApplicationUser login() {
 
         return null;
     }

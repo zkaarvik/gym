@@ -1,9 +1,9 @@
 package com.kaarvik.gym.repository;
 
-import com.kaarvik.gym.model.user.User;
+import com.kaarvik.gym.model.user.ApplicationUser;
 import org.springframework.data.repository.CrudRepository;
 
-public interface UserRepository extends CrudRepository<User, Long> {
+public interface UserRepository extends CrudRepository<ApplicationUser, Long> {
 
-    User findByEmail(String email);
+    ApplicationUser findByEmail(String email);
 }

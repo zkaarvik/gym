@@ -1,6 +1,6 @@
 package com.kaarvik.gym.controller;
 
-import com.kaarvik.gym.model.user.User;
+import com.kaarvik.gym.model.user.ApplicationUser;
 import com.kaarvik.gym.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -15,16 +15,18 @@ import javax.validation.Valid;
 @RequestMapping(UserController.REQUEST_MAPPING)
 public class UserController {
 
-    static final String REQUEST_MAPPING = "/api/v1/user";
+    public static final String REQUEST_MAPPING = "/api/v1/user";
+
+    public static final String ENDPOINT_REGISTER = "/register";
 
     @Autowired
     private UserService userService;
 
-    @PostMapping("/register")
-    public ResponseEntity register(@Valid @RequestBody final User user) {
+    @PostMapping(ENDPOINT_REGISTER)
+    public ResponseEntity register(@Valid @RequestBody final ApplicationUser applicationUser) {
 
-        final User newUser = userService.register(user);
+        final ApplicationUser newApplicationUser = userService.register(applicationUser);
 
-        return ResponseEntity.ok(newUser);
+        return ResponseEntity.ok(newApplicationUser);
     }
 }
