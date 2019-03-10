@@ -1,10 +1,10 @@
 package com.kaarvik.gym.security;
 
-public class SecurityConstants {
+class SecurityConstants {
 
-    public static final String SECRET = "TESTJWTSECRET";    //TODO: Replace with real token, don't store this here!
-    public static final long EXPIRATION_TIME = 864_000_000; // 10 days
-    public static final String TOKEN_PREFIX = "Bearer ";
-    public static final String HEADER_STRING = "Authorization";
+    static final String SECRET = "TESTJWTSECRET";    //TODO: Replace with real token, don't store this here!
+    static final long EXPIRATION_TIME = 864_000_000; // 10 days
+    static final String TOKEN_PREFIX = "Bearer ";
+    static final String HEADER_STRING = "Authorization";
 
 }

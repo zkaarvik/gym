@@ -1,6 +1,5 @@
 package com.kaarvik.gym.configuration;
 
-import com.kaarvik.gym.model.user.ApplicationUser;
 import com.kaarvik.gym.security.JWTAuthenticationFilter;
 import com.kaarvik.gym.security.JWTAuthorizationFilter;
 import com.kaarvik.gym.service.ApplicationUserDetailsService;
@@ -52,7 +51,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Override
-    public void configure(AuthenticationManagerBuilder auth) throws Exception {
+    public void configure(final AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(applicationUserDetailsService).passwordEncoder(bCryptPasswordEncoder);
     }
 

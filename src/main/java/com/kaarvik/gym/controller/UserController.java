@@ -15,9 +15,9 @@ import javax.validation.Valid;
 @RequestMapping(UserController.REQUEST_MAPPING)
 public class UserController {
 
-    public static final String REQUEST_MAPPING = "/api/v1/user";
+    static final String REQUEST_MAPPING = "/api/v1/user";
 
-    public static final String ENDPOINT_REGISTER = "/register";
+    private static final String ENDPOINT_REGISTER = "/register";
 
     @Autowired
     private UserService userService;
