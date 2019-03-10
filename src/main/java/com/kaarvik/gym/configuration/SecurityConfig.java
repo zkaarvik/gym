@@ -1,10 +1,13 @@
 package com.kaarvik.gym.configuration;
 
+import com.kaarvik.gym.security.JWTAuthenticationFilter;
+import com.kaarvik.gym.security.JWTAuthorizationFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Configuration
@@ -18,12 +21,24 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .csrf().disable()
 
+                //Endpoint security
                 .authorizeRequests()
-                .antMatchers("/api/v1/**").permitAll() //Temporarily allow access to all
                 .antMatchers("/h2-console/**").permitAll()
+                .antMatchers("/api/v1/user/register").permitAll()
+                .antMatchers("/api/v1/**").authenticated()
                 .anyRequest().authenticated()
 
-                .and().headers().frameOptions().sameOrigin();
+                //Add JWT Auth filters
+                .and()
+                .addFilter(new JWTAuthenticationFilter(authenticationManager()))
+                .addFilter(new JWTAuthorizationFilter(authenticationManager()))
+
+                //Disable session creation
+                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+
+                //Must allow frame for H2 console
+                .and()
+                .headers().frameOptions().sameOrigin();
     }
 
     @Bean
