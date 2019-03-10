@@ -1,9 +1,13 @@
 package com.kaarvik.gym.configuration;
 
+import com.kaarvik.gym.model.user.ApplicationUser;
 import com.kaarvik.gym.security.JWTAuthenticationFilter;
 import com.kaarvik.gym.security.JWTAuthorizationFilter;
+import com.kaarvik.gym.service.ApplicationUserDetailsService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -15,6 +19,12 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private static final int BCRYPT_STRENGTH = 12;
+
+    @Autowired
+    private ApplicationUserDetailsService applicationUserDetailsService;
+
+    @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Override
     protected void configure(final HttpSecurity http) throws Exception {
@@ -39,6 +49,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 //Must allow frame for H2 console
                 .and()
                 .headers().frameOptions().sameOrigin();
+    }
+
+    @Override
+    public void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(applicationUserDetailsService).passwordEncoder(bCryptPasswordEncoder);
     }
 
     @Bean
