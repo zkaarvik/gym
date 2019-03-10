@@ -1,6 +1,6 @@
 package com.kaarvik.gym.controller;
 
-import com.kaarvik.gym.model.User;
+import com.kaarvik.gym.model.user.User;
 import com.kaarvik.gym.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

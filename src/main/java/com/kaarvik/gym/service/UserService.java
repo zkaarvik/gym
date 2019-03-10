@@ -1,6 +1,6 @@
 package com.kaarvik.gym.service;
 
-import com.kaarvik.gym.model.User;
+import com.kaarvik.gym.model.user.User;
 import com.kaarvik.gym.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
