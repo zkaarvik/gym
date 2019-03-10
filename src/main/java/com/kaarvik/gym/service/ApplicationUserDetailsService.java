@@ -1,7 +1,7 @@
 package com.kaarvik.gym.service;
 
 import com.kaarvik.gym.model.user.ApplicationUser;
-import com.kaarvik.gym.repository.UserRepository;
+import com.kaarvik.gym.repository.ApplicationUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -15,11 +15,11 @@ import java.util.Collections;
 public class ApplicationUserDetailsService implements UserDetailsService {
 
     @Autowired
-    private UserRepository userRepository;
+    private ApplicationUserRepository applicationUserRepository;
 
     @Override
     public UserDetails loadUserByUsername(final String email) throws UsernameNotFoundException {
-        final ApplicationUser applicationUser = userRepository.findByEmail(email);
+        final ApplicationUser applicationUser = applicationUserRepository.findByEmail(email);
 
         if (applicationUser == null) {
             throw new UsernameNotFoundException(email);

@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.validation.Valid;
 
 @RestController
-@RequestMapping(UserController.REQUEST_MAPPING)
-public class UserController {
+@RequestMapping(ApplicationUserController.REQUEST_MAPPING)
+public class ApplicationUserController {
 
     static final String REQUEST_MAPPING = "/api/v1/user";
 
